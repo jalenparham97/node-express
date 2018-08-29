@@ -1,0 +1,15 @@
+<form ng-submit="$ctrl.addToCart($ctrl.newItem)">
+  <input type="text" placeholder="Product" ng-model="$ctrl.newItem.product">
+  <input type="text" placeholder="Price" ng-model="$ctrl.newItem.price">
+  <input type="text" placeholder="Quantity" ng-model="$ctrl.newItem.quantity">
+  <button>Add</button>
+</form>
+
+
+<section class="container">
+  <section ng-repeat="item in $ctrl.cart">
+    <p>Product: {{ item.product }}</p>
+    <p>Price: ${{ item.price }}</p>
+    <p>Quanity: {{ item.quantity }}</p>
+  </section>
+</section>
