@@ -36,10 +36,11 @@ function CartService($http) {
     });
   }
 
-  vm.updateItem = (id) => {
+  vm.updateItem = (id, quantity) => {
     return $http({
       method: "PUT",
-      url: `/shop/cart-items/${id}`
+      url: `/shop/cart-items/${id}`,
+      data: {quantity}
     }).then((response) => {
       vm.cart = response.data;
       console.log(vm.cart);

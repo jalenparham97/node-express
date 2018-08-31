@@ -5,6 +5,13 @@ const cart = {
 
   controller: ["CartService", function(CartService) {
     const vm = this;
+    vm.update = false;
+
+    vm.editQuantity = (id) => {
+      vm.update = true;
+      console.log(id);
+    }
+
     CartService.getAllItems().then(() => {
       vm.cart = CartService.cart;
       console.log(vm.cart);
@@ -28,8 +35,9 @@ const cart = {
       });
     }
 
-    vm.updateItemQuantity = (id) => {
-      CartService.updateItem(id).then(() => {
+    vm.updateItemQuantity = (id, quantity) => {
+      vm.update = false;
+      CartService.updateItem(id, quantity).then(() => {
         CartService.getAllItems().then(() => {
           vm.cart = CartService.cart;
           console.log(vm.cart);

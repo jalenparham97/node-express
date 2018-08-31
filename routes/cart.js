@@ -30,7 +30,7 @@ cart.delete("/shop/cart-items/:id", (request, response) => {
 });
 
 cart.put("/shop/cart-items/:id", (request, response) => {
-  pool.query("Update shoppingcart Set quantity=$1::int Where id=$2::int", [request.body.quantity, request.params.id]).then((results) => {
+  pool.query("Update shoppingcart Set quantity=$1::int Where id=$2::int", [parseInt(request.body.quantity), parseInt(request.params.id)]).then((results) => {
     console.log(results.rows);
     response.send(results.rows);
   }).catch((err) => {

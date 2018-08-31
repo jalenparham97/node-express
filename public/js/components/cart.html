@@ -1,17 +1,22 @@
+<section class="title-container">
+  <h1 class="title">Your Game Cart</h1>
+</section>
+
 <form ng-submit="$ctrl.addToCart($ctrl.newItem)">
   <input type="text" placeholder="Product" ng-model="$ctrl.newItem.product">
-  <input type="text" placeholder="Price" ng-model="$ctrl.newItem.price">
-  <input type="text" placeholder="Quantity" ng-model="$ctrl.newItem.quantity">
+  <input type="number" placeholder="Price" ng-model="$ctrl.newItem.price">
+  <input type="number" placeholder="Quantity" ng-model="$ctrl.newItem.quantity">
   <button>Add</button>
 </form>
 
 
 <section class="container">
-  <section ng-repeat="item in $ctrl.cart">
+  <section ng-repeat="item in $ctrl.cart | orderBy: 'id'">
     <p>Product: {{ item.product }}</p>
     <p>Price: {{ item.price | currency}}</p>
-    <p>Quanity: {{ item.quantity }}</p>
-    <button>Change Quantity</button>
+    <p ng-hide="$ctrl.update">Quanity: {{ item.quantity }}</p>
+    <input class="input" type="number" value="item.quantity" ng-model="item.quantity" ng-show="$ctrl.update" ng-blur="$ctrl.updateItemQuantity(item.id, item.quantity)">
+    <button ng-click="$ctrl.editQuantity(item.id)">Change Quantity</button>
     <button ng-click="$ctrl.deleteFromCart(item.id)">X</button>
   </section>
 </section>
