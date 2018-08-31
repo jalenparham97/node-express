@@ -2,7 +2,6 @@
 
 function CartService($http) {
   const vm = this;
-  vm.cart;
 
   vm.getAllItems = () => {
     return $http({
@@ -10,7 +9,7 @@ function CartService($http) {
       url: "/shop/cart-items"
     }).then((response) => {
       vm.cart = response.data;
-      console.log(response);
+      console.log(vm.cart);
     })
   }
 
@@ -22,7 +21,30 @@ function CartService($http) {
     }).then((response) => {
       vm.cart = response.data;
       console.log(vm.cart);
-    })
+      return vm.cart;
+    });
+  }
+
+  vm.deleteItem = (id) => {
+    return $http({
+      method: "DELETE",
+      url: `/shop/cart-items/${id}`
+    }).then((response) => {
+      vm.cart = response.data;
+      console.log(vm.cart);
+      return vm.cart;
+    });
+  }
+
+  vm.updateItem = (id) => {
+    return $http({
+      method: "PUT",
+      url: `/shop/cart-items/${id}`
+    }).then((response) => {
+      vm.cart = response.data;
+      console.log(vm.cart);
+      return vm.cart;
+    });
   }
 }
 

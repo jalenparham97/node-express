@@ -25,8 +25,9 @@ a {
 .container section {
   color: #fff;
   border: 3px solid #E50913;
-  margin: 10px 20px;
-  padding: 20px;
+  margin: 10px 10px;
+  padding: 10px;
+  width: 300px;
 }
 
 form {
@@ -45,6 +46,13 @@ form input, form button {
 
 form input {
   margin-bottom: 10px;
+}
+
+.container button {
+  padding: 5px;
+  font-size: 16px;
+  margin-right: 5px;
+  margin-top: 10px;
 }
 
 

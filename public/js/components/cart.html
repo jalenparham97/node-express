@@ -9,7 +9,9 @@
 <section class="container">
   <section ng-repeat="item in $ctrl.cart">
     <p>Product: {{ item.product }}</p>
-    <p>Price: ${{ item.price }}</p>
+    <p>Price: {{ item.price | currency}}</p>
     <p>Quanity: {{ item.quantity }}</p>
+    <button>Change Quantity</button>
+    <button ng-click="$ctrl.deleteFromCart(item.id)">X</button>
   </section>
 </section>

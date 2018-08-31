@@ -8,16 +8,35 @@ const cart = {
     CartService.getAllItems().then(() => {
       vm.cart = CartService.cart;
       console.log(vm.cart);
-    })
+    });
+
     vm.addToCart = (newItem) => {
-      CartService.postItem(newItem);
-      CartService.getAllItems().then(() => {
-        vm.cart = CartService.cart;
-        console.log(vm.cart);
-      })
+      CartService.postItem(newItem).then(() => {
+        CartService.getAllItems().then(() => {
+          vm.cart = CartService.cart;
+          console.log(vm.cart);
+        });
+      });
+    }
+
+    vm.deleteFromCart = (id) => {
+      CartService.deleteItem(id).then(() => {
+        CartService.getAllItems().then(() => {
+          vm.cart = CartService.cart;
+          console.log(vm.cart);
+        });  
+      });
+    }
+
+    vm.updateItemQuantity = (id) => {
+      CartService.updateItem(id).then(() => {
+        CartService.getAllItems().then(() => {
+          vm.cart = CartService.cart;
+          console.log(vm.cart);
+        });
+      });
     }
   }]
-
 }
 
 angular
